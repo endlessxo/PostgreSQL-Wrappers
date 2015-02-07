@@ -1,4 +1,8 @@
-
+'''
+Latitude has values from -90 to 90. Longitude has values from -180 to 180.
+This script is responsible for creating test values for our database. It uses
+the random library to generate GPS values to test.
+'''
 import psycopg2
 import random
 import math
