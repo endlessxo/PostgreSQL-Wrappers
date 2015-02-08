@@ -82,24 +82,17 @@ class MailBox(object):
             print 'Message %s\n%s\n' % (num, data[0][1])
 
     def parse_data(self, foo):
-        yolo = foo.split()
-        flag = False
-        doge = ''
-        yahtzee = 'Yahtzee'
-        #print foo
-        for i in yolo:
-            if i == 'text_0.txt':
-                flag = True
-            if len(i) > 1:
-                if i[0:2] == '--':
-                    flag = False
-            if (flag) & (i != 'text_0.txt'):
-                doge = doge + (i + ' ')
-        if doge == '':
-            print "nothing got parsed for some reason, here's the string input"
-            print foo
-            return yahtzee
-        return doge
+    	kungfoo = foo.split()
+    	flag = False
+    	doge = ''
+    	for word in kungfoo:
+    		if word == '--':
+    			flag = False
+    		if flag:
+    			doge = doge + (word + ' ')
+    		if word == 'delsp=yes':
+    			flag = True
+    	return doge
 
     def print_unread_msgs(self):
         
@@ -150,5 +143,5 @@ if __name__ == '__main__':
     imap_password = 'Yahtzee2012'
     with MailBox(imap_username, imap_password) as mbox:
         print "There are " + str(mbox.get_count()) + " unread emails!"
-        print mbox.print_unread_msgs()
+        mbox.print_unread_msgs()
         print mbox.unread_email
