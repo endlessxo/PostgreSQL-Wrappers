@@ -54,8 +54,9 @@ class MailBox(object):
     def get_count(self):
         self.imap.select('Inbox')
         status, data = self.imap.search(None, 'ALL')
-        return sum(1 for num in data[0].split())
- 
+        #return sum(1 for num in data[0].split())
+ 	return len(self.unread_email)
+
     def fetch_message(self, num):
         self.imap.select('Inbox')
         status, data = self.imap.fetch(str(num), '(RFC822)')
@@ -142,6 +143,7 @@ if __name__ == '__main__':
     imap_username = 'BostonUnderwater@gmail.com'
     imap_password = 'Yahtzee2012'
     with MailBox(imap_username, imap_password) as mbox:
+	mbox.print_unread_msgs()
         print "There are " + str(mbox.get_count()) + " unread emails!"
-        mbox.print_unread_msgs()
+        #mbox.print_unread_msgs()
         print mbox.unread_email

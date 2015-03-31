@@ -50,8 +50,8 @@ for node in dict:
         point = Point((lon,lat))
         plist.append(point)
 
-        # Generate feature and add it to feature list
-        feature = Feature(geometry=point, properties={"nodeNumber": dict[node]['node_number'], "waterLevel": dict[node]['water_level'], "time": dict[node]['time'], "longitude": dict[node]['longitude'], "latitude": dict[node]['latitude']})
+        # Generate feature w/ properties and add it to feature list
+        feature = Feature(geometry=point, properties={"nodeNumber": dict[node]['node_number'], "waterLevel": dict[node]['water_level'], "time": dict[node]['time'], "longitude": dict[node]['longitude'], "latitude": dict[node]['latitude']}, id=str(nodeCount))
         flist.append(feature)
 
 # Generate Feature Collection and dump to file
